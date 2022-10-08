@@ -3,6 +3,7 @@ package com.example.campapp
 import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
+import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.material.*
@@ -31,7 +32,8 @@ class HomeActv : ComponentActivity() {
         setContent {
             CampAppTheme {
                 Surface(
-                    color = WhatsAppGreen
+                    color = WhatsAppGreen,
+                    modifier = Modifier.background(WhatsAppGreen)
                 ) {
                     HomeView()
                 }
