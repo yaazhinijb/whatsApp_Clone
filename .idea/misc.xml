@@ -3,8 +3,13 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="..\:/campApp/app/src/main/res/drawable/ic_addcall.xml" value="0.1" />
         <entry key="..\:/campApp/app/src/main/res/drawable/ic_call_miss.xml" value="0.1" />
         <entry key="..\:/campApp/app/src/main/res/drawable/ic_call_receive.xml" value="0.1" />
+        <entry key="..\:/campApp/app/src/main/res/drawable/ic_camera.xml" value="0.1" />
+        <entry key="..\:/campApp/app/src/main/res/drawable/ic_create.xml" value="0.1" />
+        <entry key="..\:/campApp/app/src/main/res/drawable/ic_message.xml" value="0.1" />
+        <entry key="..\:/campApp/app/src/main/res/drawable/ic_person.xml" value="0.1" />
         <entry key="..\:/campApp/app/src/main/res/drawable/ic_whatsapp.xml" value="0.1" />
         <entry key="..\:/campApp/app/src/main/res/mipmap-anydpi-v26/ic_launcher_round.xml" value="0.1" />
       </map>

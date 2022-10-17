@@ -1,17 +1,18 @@
 package com.example.campapp
 
+import android.content.Context
 import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.compose.foundation.background
-import androidx.compose.foundation.layout.Column
-import androidx.compose.foundation.layout.fillMaxSize
+import androidx.compose.foundation.layout.*
 import androidx.compose.material.*
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.MoreVert
 import androidx.compose.material.icons.filled.Search
 import androidx.compose.runtime.*
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.unit.dp
 import com.example.campapp.composable.AppTabBar
 import com.example.campapp.composable.AppTabs
@@ -20,7 +21,7 @@ import com.example.campapp.ui.theme.WhatsAppGreen
 import com.example.campapp.ui.view.CallsView
 import com.example.campapp.ui.view.ChatsView
 import com.example.campapp.ui.view.StatusView
-
+import androidx.compose.ui.graphics.Color
 
 enum class HomeTab{
     CHATS, STATUS, CALLS
@@ -35,7 +36,7 @@ class HomeActv : ComponentActivity() {
                     color = WhatsAppGreen,
                     modifier = Modifier.background(WhatsAppGreen)
                 ) {
-                    HomeView()
+                    HomeView(this)
                 }
             }
         }
@@ -43,8 +44,9 @@ class HomeActv : ComponentActivity() {
 }
 
 @Composable
-fun HomeView() {
+fun HomeView(mContext: Context) {
     var showMenu by remember{ mutableStateOf(false)}
+    var tabSelected by remember { mutableStateOf(HomeTab.CHATS)}
     Scaffold(
         topBar = {
             TopAppBar(
@@ -67,6 +69,51 @@ fun HomeView() {
                 }
             )
         },
+        floatingActionButton = {
+            when(tabSelected){
+                HomeTab.CHATS -> {
+                    FloatingActionButton(onClick = { /*TODO*/ }, backgroundColor = androidx.compose.ui.graphics.Color.White) {
+                        Icon(
+                            painter = painterResource(id = R.drawable.ic_message),
+                            contentDescription = null,
+                            tint = androidx.compose.ui.graphics.Color.White
+                        )
+                    }
+                }
+                HomeTab.STATUS -> {
+                    Column{
+                        FloatingActionButton(
+                            onClick = {},
+                            backgroundColor = androidx.compose.ui.graphics.Color.White,
+                            modifier = Modifier.size(40.dp)
+                        ){
+                            Icon(
+                                painter = painterResource(id = R.drawable.ic_create),
+                                contentDescription = null,
+                                tint = androidx.compose.ui.graphics.Color.DarkGray
+                            )
+                        }
+                        Spacer(modifier = Modifier.height(16.dp))
+                        FloatingActionButton(onClick = { /*TODO*/ }, backgroundColor = androidx.compose.ui.graphics.Color.Green) {
+                            Icon(
+                                painter = painterResource(id = R.drawable.ic_camera),
+                                contentDescription = null,
+                                tint =  androidx.compose.ui.graphics.Color.White
+                            )
+                        }
+                    }
+                }
+                HomeTab.CALLS -> {
+                    FloatingActionButton(onClick = { /*TODO*/ }, backgroundColor = androidx.compose.ui.graphics.Color.Green) {
+                        Icon(
+                            painter = painterResource(id = R.drawable.ic_addcall),
+                            contentDescription = null,
+                            tint = androidx.compose.ui.graphics.Color.White
+                        )
+                    }
+                }
+            }
+        },
         modifier = Modifier.fillMaxSize()
     ){
         Column(Modifier.fillMaxSize()){
@@ -76,7 +123,7 @@ fun HomeView() {
                 onTabSelected = { tabSelected = it }
             )
             when(tabSelected){
-                HomeTab.CHATS -> ChatsView()
+                HomeTab.CHATS -> ChatsView(mContext)
                 HomeTab.STATUS -> StatusView()
                 HomeTab.CALLS -> CallsView()
             }

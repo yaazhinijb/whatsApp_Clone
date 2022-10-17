@@ -1,6 +1,9 @@
 package com.example.campapp.ui.view
 
+import android.content.Context
+import android.content.Intent
 import androidx.compose.foundation.Image
+import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.shape.CircleShape
@@ -17,21 +20,29 @@ import androidx.compose.ui.unit.sp
 import coil.compose.rememberImagePainter
 import com.example.campapp.data.Chat
 import com.example.campapp.data.DummyData
+import github.farhanroy.whatsappclone.DetailActivity
 
 @Composable
-fun ChatsView(modifier: Modifier = Modifier.padding(vertical = 30.dp)){
+fun ChatsView(mContext: Context){
     val dummyChat = DummyData.listChat
     LazyColumn{
         items(dummyChat.size){ index ->
-            ChatItem(dummyChat[index])
+            ChatItem(dummyChat[index], mContext)
         }
     }
 }
 
 
 @Composable
-fun ChatItem(chat: Chat){
-    Row(Modifier.padding(horizontal = 16.dp, vertical = 8.dp)){
+fun ChatItem(chat: Chat, mContext: Context){
+    Row(Modifier
+        .padding(horizontal = 16.dp, vertical = 8.dp)
+        .clickable{
+            val intent = Intent(mContext, DetailActivity::class.java)
+            intent.putExtra("extra_chatid", chat.id)
+            mContext.startActivity(intent)
+        }
+    ){
         Image(
             painter = rememberImagePainter(data = chat.imageUrl),
             contentDescription = null,

@@ -1,5 +1,7 @@
 package com.example.campapp.data
 
+import android.os.Message
+
 data class Chat(
     val id: Int,
     val name: String,
@@ -16,6 +18,11 @@ data class Call(
     val imageUrl: String,
     val isMissCall: Boolean,
     val isIncoming: Boolean
+)
+
+data class Message(
+    val message: String,
+    val isPeer: Boolean
 )
 
 object DummyData{
@@ -89,5 +96,14 @@ object DummyData{
 
 
 
+    )
+
+    val listMessage = listOf(
+        Message("Hey, What's Up?", false),
+        Message("I'm in Training. Here in the woods", true),
+        Message("With?", false),
+        Message("With Tomioka Giyu", true),
+        Message("Aight. TTYL", false),
+        Message("Bubye.", true)
     )
 }
