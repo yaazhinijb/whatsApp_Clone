@@ -1,4 +1,4 @@
-package github.farhanroy.whatsappclone
+package com.example.campapp
 
 import android.os.Bundle
 import androidx.activity.ComponentActivity
@@ -33,7 +33,7 @@ import com.example.campapp.data.DummyData
 import com.example.campapp.ui.theme.CampAppTheme
 import com.example.campapp.data.Message
 
-class DetailActivity : ComponentActivity() {
+class DetailsActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContent {

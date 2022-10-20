@@ -20,7 +20,7 @@ import androidx.compose.ui.unit.sp
 import coil.compose.rememberImagePainter
 import com.example.campapp.data.Chat
 import com.example.campapp.data.DummyData
-import github.farhanroy.whatsappclone.DetailActivity
+import com.example.campapp.DetailsActivity
 
 @Composable
 fun ChatsView(mContext: Context){
@@ -37,8 +37,8 @@ fun ChatsView(mContext: Context){
 fun ChatItem(chat: Chat, mContext: Context){
     Row(Modifier
         .padding(horizontal = 16.dp, vertical = 8.dp)
-        .clickable{
-            val intent = Intent(mContext, DetailActivity::class.java)
+        .clickable {
+            val intent = Intent(mContext, DetailsActivity::class.java)
             intent.putExtra("extra_chatid", chat.id)
             mContext.startActivity(intent)
         }
